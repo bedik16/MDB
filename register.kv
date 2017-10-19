@@ -1,0 +1,100 @@
+<Register>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "background.jpg"
+            
+    BoxLayout:
+        id: register_layout
+        orientation: "vertical"
+        padding: [10, 50, 10, 50]
+        spacing: 50
+
+        Label:
+            text: "Registration"
+            font_size: 32
+
+        BoxLayout:
+            size_hint_y: 4
+            orientation: "horizontal"
+            Label:
+                size_hint_x: .25
+                pos_hint_x: 0
+                text: "Name:"
+                font_size: 18
+                halign: "left"
+
+            TextInput:
+                id: name
+                multiline: False
+                font_size: 24
+        BoxLayout:
+            size_hint_y: 4
+            orientation: "horizontal"
+            Label:
+                text: "Surname:"
+                size_hint_x: .25
+                font_size: 18
+                halign: "left"
+
+            TextInput:
+                id: surname
+                multiline: False
+                font_size: 24
+
+        BoxLayout:
+            size_hint_y: 4
+            orientation: "horizontal"
+            Label:
+                text: "E-mail:"
+                size_hint_x: .25
+                font_size: 18
+                halign: "left"
+
+            TextInput:
+                id: email
+                multiline: False
+                font_size: 24
+
+        BoxLayout:
+            size_hint_y: 4
+            orientation: "horizontal"
+            Label:
+                text: "Phone:"
+                size_hint_x: .25
+                font_size: 18
+                halign: "left"
+
+            TextInput:
+                id: phone
+                multiline: False
+                font_size: 24
+
+        BoxLayout:
+            size_hint_y: 4
+            orientation: "horizontal"
+            Label:
+                text: "Password:"
+                size_hint_x: .25
+                font_size: 18
+                halign: "left"
+
+            TextInput:
+                id: password
+                multiline: False
+                password: True
+                font_size: 24
+
+        BoxLayout:
+            size_hint_y: 4
+            orientation: "horizontal"
+            spacing: 20
+            Button:
+                text: "Save"
+                font_size: 24
+
+            Button:
+                text: "Cancel"
+                font_size: 24
+                on_press: root.do_cancel()    
