@@ -15,11 +15,12 @@
         spacing: 50
 
         Label:
+            size_hint_y: 1
             text: 'Welcome to the smart charging station'
             font_size: 32
 
         BoxLayout:
-            size_hint_y: 4
+            size_hint_y: 8
             orientation: 'vertical'
 
             Label:
@@ -38,13 +39,14 @@
                 font_size: 24
 
         BoxLayout:
-            size_hint_y: 4
+            size_hint_y: 8
             orientation: 'vertical'
             Label:
                 size_hint: 1, .2
+                spacing: 20
                 text: 'Password'
                 halign: 'left'
-                font_size: 18
+                font_size: 20
                 text_size: root.width-20, 20
 
             TextInput:
@@ -57,21 +59,23 @@
 
         BoxLayout:
             orientation: "horizontal"
-            size_hint_y: 4
+            size_hint_y: 12
             padding: 20
             spacing: 20
-            Button:         
+            Button:
+                size_hint: 1, 1 
                 text: 'Register'
                 font_size: 24
                 on_press: root.do_register()
 
             Button:
+                size_hint: 1, 1
                 text: "Login"
                 font_size: 24
                 on_press: root.do_login(login.text, password.text)
 
         BoxLayout:
-            size_hint_y: 1
+            size_hint_y: .5
             orientation: "vertical"
             Label:
                 text: "First time use ? Please register using the Register button"
