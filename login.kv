@@ -7,67 +7,72 @@
             pos: self.pos
             size: self.size
             source: "background.jpg"
-    FloatLayout:
                 
+    BoxLayout:
+        id: login_layout
+        orientation: 'vertical'
+        padding: [10,50,10,50]
+        spacing: 50
+
+        Label:
+            text: 'Welcome to the smart charging station'
+            font_size: 32
+
         BoxLayout:
-            id: login_layout
+            size_hint_y: 4
             orientation: 'vertical'
-            padding: [10,50,10,50]
-            spacing: 50
 
             Label:
-                text: 'Welcome to the smart charging station'
-                font_size: 32
-
-            BoxLayout:
-                size_hint_y: 4
-                orientation: 'vertical'
-
-                Label:
-                    text: "E-mail"
-                    font_size: 18
-                    halign: 'left'
-                    text_size: root.width-20, 20
-
-                TextInput:
-                    id: login
-                    multiline:False
-                    font_size: 28
-
-            BoxLayout:
-                size_hint_y: 4
-                orientation: 'vertical'
-                Label:
-                    text: 'Password'
-                    halign: 'left'
-                    font_size: 18
-                    text_size: root.width-20, 20
-
-                TextInput:
-                    id: password
-                    multiline:False
-                    password:True
-                    font_size: 28
-
-
-            BoxLayout:
-                orientation: "horizontal"
-                size_hint_y: 4
-                padding: 20
+                size_hint: 1, .2
                 spacing: 20
-                Button:         
-                    text: 'Register'
-                    font_size: 24
-                    on_press: root.do_register()
+                text: "E-mail"
+                font_size: 20
+                halign: 'left'
+                text_size: root.width-20, 20
 
-                Button:
-                    text: "Login"
-                    font_size: 24
-                    on_press: root.do_login(login.text, password.text)
+            TextInput:
+                size_hint: 1, .9
+                spacing: 20
+                id: login
+                multiline:False
+                font_size: 24
 
-            BoxLayout:
-                size_hint_y: 1
-                orientation: "vertical"
-                Label:
-                    text: "First time use ? Please register using the Register button"
-                    color: 1,0,0,1
+        BoxLayout:
+            size_hint_y: 4
+            orientation: 'vertical'
+            Label:
+                size_hint: 1, .2
+                text: 'Password'
+                halign: 'left'
+                font_size: 18
+                text_size: root.width-20, 20
+
+            TextInput:
+                size_hint: 1, .9
+                id: password
+                multiline:False
+                password:True
+                font_size: 24
+
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: 4
+            padding: 20
+            spacing: 20
+            Button:         
+                text: 'Register'
+                font_size: 24
+                on_press: root.do_register()
+
+            Button:
+                text: "Login"
+                font_size: 24
+                on_press: root.do_login(login.text, password.text)
+
+        BoxLayout:
+            size_hint_y: 1
+            orientation: "vertical"
+            Label:
+                text: "First time use ? Please register using the Register button"
+                color: 1,0,0,1
