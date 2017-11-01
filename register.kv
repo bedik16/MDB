@@ -4,90 +4,97 @@
             pos: self.pos
             size: self.size
             source: "background.jpg"
-            
-    BoxLayout:
-        id: register_layout
-        orientation: "vertical"
-        padding: [10, 50, 10, 50]
-        spacing: 50
 
-        Label:
-            text: "Registration"
-            font_size: 32
+    GridLayout:
+        cols: 1
+        padding: [10, 10, 10, 10]
+        BoxLayout:
+            orientation: "vertical"
+            Label:
+                text: "Registration"
+                font_size: 32
 
         BoxLayout:
-            size_hint_y: 4
             orientation: "horizontal"
             Label:
-                size_hint_x: .25
-                pos_hint_x: 0
+                size_hint_x: .2
                 text: "Name:"
-                font_size: 18
+                font_size: 24
                 halign: "left"
 
             TextInput:
                 id: name
-                multiline: False
+                size_hint_y: .7
                 font_size: 24
+                pos_hint: {'top': 0.8}
+                multiline: False
+                font_size: 18
+
         BoxLayout:
-            size_hint_y: 4
             orientation: "horizontal"
             Label:
+                size_hint_x: .2
                 text: "Surname:"
-                size_hint_x: .25
-                font_size: 18
+                font_size: 24
                 halign: "left"
 
             TextInput:
                 id: surname
-                multiline: False
+                size_hint_y: .7
                 font_size: 24
+                pos_hint: {'top': 0.8}
+                font_size: 18
 
         BoxLayout:
-            size_hint_y: 4
             orientation: "horizontal"
             Label:
+                size_hint_x: .2
                 text: "E-mail:"
-                size_hint_x: .25
-                font_size: 18
+                font_size: 24
                 halign: "left"
 
             TextInput:
                 id: email
-                multiline: False
+                size_hint_y: .7
                 font_size: 24
+                pos_hint: {'top': 0.8}
+                multiline: False
+                font_size: 18
 
         BoxLayout:
-            size_hint_y: 4
             orientation: "horizontal"
             Label:
+                size_hint_x: .2
                 text: "Phone:"
-                size_hint_x: .25
-                font_size: 18
+                font_size: 24
                 halign: "left"
 
             TextInput:
                 id: phone
-                multiline: False
+                size_hint_y: .7
                 font_size: 24
+                pos_hint: {'top': 0.8}
+                multiline: False
+                font_size: 18
 
         BoxLayout:
-            size_hint_y: 4
             orientation: "horizontal"
             Label:
+                size_hint_x: .2
                 text: "Password:"
-                size_hint_x: .25
-                font_size: 18
+                font_size: 24
                 halign: "left"
 
             TextInput:
                 id: password
+                size_hint_y: .7
+                font_size: 24
+                pos_hint: {'top': 0.8}
                 multiline: False
                 password: True
-                font_size: 24
+                font_size: 18
 
         BoxLayout:
-            size_hint_y: 4
             orientation: "horizontal"
             spacing: 20
             Button:
@@ -97,4 +104,4 @@
             Button:
                 text: "Cancel"
                 font_size: 24
-                on_press: root.do_cancel()    
+                on_press: root.do_cancel()
