@@ -1,5 +1,6 @@
 from kivy.app import App
 from kivy.uix.screenmanager import Screen, SlideTransition
+from kivy.garden.circulardatetimepicker import CircularTimePicker
 
 class Connected(Screen):
     def disconnect(self):

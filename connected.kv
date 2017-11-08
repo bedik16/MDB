@@ -1,11 +1,32 @@
 <Connected>:
-    BoxLayout:
-        orientation: 'vertical'
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "background.jpg"
+    GridLayout:
+        cols: 1
+        padding: [10, 10, 10, 10]
+        BoxLayout:
+            size_hint_y: .1
+            orientation: "vertical"
+            Label:
+                text: "Select Pick-up Time"
+                font_size: 32
 
-        Label:
-            text: "You are now connected"
-            font_size: 32
-        Button:
-            text: "Disconnect"
-            font_size: 24
-            on_press: root.disconnect()
+        BoxLayout:
+                    
+            CircularTimePicker
+
+
+        BoxLayout:
+            size_hint_y: .2
+            orientation: "horizontal"
+            spacing: 20
+            Button:
+                text: "Dismiss"
+                font_size: 24
+                on_release: root.disconnect()
+            Button:
+                text: "Save"
+                font_size: 24

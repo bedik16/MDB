@@ -1,5 +1,7 @@
 from kivy.app import App
 from kivy.uix.screenmanager import Screen, SlideTransition
+from kivy.uix.popup import Popup
+from kivy.factory import Factory
 
 class Register(Screen):
     def do_cancel(self):
@@ -15,6 +17,7 @@ class Register(Screen):
         app.dict["surname"] = surnameText
         app.dict["email"] = emailText
         app.dict["phone"] = phoneText
+        Factory.MyPopup().open()
         #just for debugging atm
         print("Name is {}\n".format(app.dict["name"]))
         print("Surname is {}\n".format(app.dict["surname"]))
