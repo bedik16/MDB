@@ -7,3 +7,9 @@ class Connected(Screen):
         self.manager.transition = SlideTransition(direction="right")
         self.manager.current = 'login'
         self.manager.get_screen('login').resetForm()
+
+    def do_save(self):
+        self.manager.transition = SlideTransition(direction="left")
+        self.manager.current = 'status'
+        self.manager.get_screen('status')
+
