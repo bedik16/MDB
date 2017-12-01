@@ -1,5 +1,6 @@
 #:include connected.kv
 #:include register.kv
+#:include status.kv
 
 <Login>:
     canvas.before:
@@ -8,75 +9,68 @@
             size: self.size
             source: "background.jpg"
                 
-    BoxLayout:
-        id: login_layout
-        orientation: 'vertical'
-        padding: [10,50,10,50]
-        spacing: 50
-
-        Label:
-            size_hint_y: 1
-            text: 'Welcome to the smart charging station'
-            font_size: 32
+    GridLayout:
+        cols: 1
+        padding: [10, 10, 10, 10]
+        BoxLayout:
+            size_hint_y: .2
+            id: login_layout
+            orientation: "vertical"
+            Label:
+                text: "Welcome to the smart charging station"
+                font_size: 32
 
         BoxLayout:
-            size_hint_y: 8
-            orientation: 'vertical'
-
+            orientation: "vertical"
             Label:
-                size_hint: 1, .2
-                spacing: 20
-                text: "E-mail"
-                font_size: 20
-                halign: 'left'
-                text_size: root.width-20, 20
-
+                text: "Email"
+                font_size: 24
+                valign: "bottom"
+                halign: "left"
+                text_size: root.width -20, 60
+                
             TextInput:
-                size_hint: 1, .9
-                spacing: 20
                 id: login
-                multiline:False
+                multiline: False
+                size_hint_y: .6
+                valign: "top"
                 font_size: 24
 
-        BoxLayout:
-            size_hint_y: 8
-            orientation: 'vertical'
             Label:
-                size_hint: 1, .2
-                spacing: 20
-                text: 'Password'
-                halign: 'left'
-                font_size: 20
-                text_size: root.width-20, 20
+                text: "Password"
+                font_size: 24
+                halign: "left"
+                text_size: root.width -20, 60 
 
             TextInput:
-                size_hint: 1, .9
                 id: password
-                multiline:False
-                password:True
+                size_hint_y: .6
+                pos_hint: {'top': 1}
+                multiline: False
+                password: True
                 font_size: 24
-
 
         BoxLayout:
             orientation: "horizontal"
-            size_hint_y: 12
-            padding: 20
+            size_hint_y: .4
             spacing: 20
+
             Button:
-                size_hint: 1, 1 
-                text: 'Register'
+                text: "Register"
                 font_size: 24
+                size_hint_y: .6
                 on_press: root.do_register()
 
             Button:
-                size_hint: 1, 1
                 text: "Login"
                 font_size: 24
+                size_hint_y: .6
                 on_press: root.do_login(login.text, password.text)
 
         BoxLayout:
-            size_hint_y: .5
             orientation: "vertical"
+            size_hint_y: .2
+
             Label:
                 text: "First time use ? Please register using the Register button"
                 color: 1,0,0,1

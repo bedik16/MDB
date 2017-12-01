@@ -1,10 +1,13 @@
 from kivy.app import App
 from kivy.properties import StringProperty
 from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
+from backend.ics import Ics
+import time
 import os
 
 from connected import Connected
 from register import Register
+from status import Status
 
 class Login(Screen):
     def do_login(self, loginText, passwordText):
@@ -14,6 +17,7 @@ class Login(Screen):
         app.dict["password"] = passwordText
 
         self.manager.transition = SlideTransition(direction="left")
+
         self.manager.current = 'connected'
 
       #  app.config.read(app.get_application_config())
@@ -30,6 +34,7 @@ class Login(Screen):
     def do_register(self):
         self.manager.transition = SlideTransition(direction="right")
         self.manager.current = "register"
+
         
 
 class LoginApp(App):
@@ -39,29 +44,27 @@ class LoginApp(App):
     surname = StringProperty(None)
     phone = StringProperty(None)
 
+
     dict = {"email": email, "password": password, "name": name, "surname": surname, "phone": phone}
     
     def build(self):
-        manager = ScreenManager()
+        backend = Ics()
+        backend.attach(self)
+        self.manager = ScreenManager()
 
-        manager.add_widget(Login(name='login'))
-        manager.add_widget(Connected(name='connected'))
-        manager.add_widget(Register(name='register'))
+        self.manager.add_widget(Login(name='login'))
+        self.manager.add_widget(Connected(name='connected'))
+        self.manager.add_widget(Register(name='register'))
+        self.manager.add_widget(Status(name='status'))
 
-        return manager
+        return self.manager
 
-    def get_application_config(self):
-        if(not self.email):
-            return super(LoginApp, self).get_application_config()
+    def update(self, *args, **kwargs):
+        self.manager.transition = SlideTransition(direction="left")
+        self.manager.current = 'connected'
+        
+    
 
-        conf_directory = self.user_data_dir + '/' + self.email
-
-        if(not os.path.exists(conf_directory)):
-            os.makedirs(conf_directory)
-
-        return super(LoginApp, self).get_application_config(
-            '%s/config.cfg' % (conf_directory)
-        )
 
 if __name__ == '__main__':
     LoginApp().run()
