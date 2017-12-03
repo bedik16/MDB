@@ -1,7 +1,33 @@
 #:include connected.kv
 #:include register.kv
 #:include status.kv
+#:include administration.kv
+#:include start.kv
+#:import Factory kivy.factory.Factory
+<ErrorPopup@Popup>:
+    auto_dismiss: False
+    title: "Error"
+    size_hint: None, None
+    size: 400, 400
 
+    BoxLayout:
+        orientation: "vertical"
+
+        BoxLayout:
+            orientation: "vertical"
+            Label:
+                text: "Please enter a valid e-mail or password"
+                multiline: False
+                position_hint: None, None
+                position: 200, 200
+                font_size: 18
+
+            Button:
+                text: "Back"
+                size_hint_y: .3
+                font_size: 24
+                on_press: root.dismiss()
+    
 <Login>:
     canvas.before:
         Rectangle:

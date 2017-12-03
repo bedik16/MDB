@@ -1,4 +1,4 @@
-<Status>:
+<Administration>:
     canvas.before:
         Rectangle:
             pos: self.pos
@@ -12,21 +12,8 @@
             size_hint_y: .2
             orientation: "vertical"
             Label:
-                text: "Charge Status"
+                text: "Administration Settings"
                 font_size: 32
-
-        BoxLayout:
-            orientation: "vertical"
-            Label:
-                text: "Progression: {}%".format(int(pb.value))
-                font_size: 24
-                
-
-
-            ProgressBar:
-                id: pb
-                size_hint_y: .9
-                value: 78
 
         BoxLayout:
             orientation: "vertical"
@@ -35,3 +22,4 @@
                 text: "Cancel"
                 font_size: 24
                 on_press: root.do_cancel()
+
