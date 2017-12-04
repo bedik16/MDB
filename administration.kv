@@ -1,4 +1,5 @@
 <Administration>:
+    my_label: pwm_label    
     canvas.before:
         Rectangle:
             pos: self.pos
@@ -14,10 +15,34 @@
             Label:
                 text: "Administration Settings"
                 font_size: 32
+        GridLayout:
+            cols: 2
+            padding: [10, 10, 10, 10]
+            
+            BoxLayout:
+                orientation: "horizontal"
+                spacing: 20
+                Button:
+                    text: "Increment"
+                    font_size: 24
+                    on_press: root.do_increment()
+                Button:
+                    text: "Decrement"
+                    font_size: 24
+                    on_press: root.do_decrement()
+
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    id: pwm_label
+                    text: "PWM Value: 0"
+                    font_size: 24
+                
 
         BoxLayout:
             orientation: "vertical"
-            size_hint_y: .1
+            padding: [10, 10, 10, 10]
+            size_hint_y: .2
             Button:
                 text: "Cancel"
                 font_size: 24
