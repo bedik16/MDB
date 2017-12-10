@@ -16,27 +16,40 @@ from status import Status
 from administration import Administration
 from start import Start
 
-class Login(Screen):
-    def do_login(self, loginText, passwordText):
-        app = App.get_running_app()
+from kivy.core.window import Window
 
-        app.dict["email"] = loginText
-        app.dict["password"] = passwordText
+class Login(Screen):
+
+    def __init__(self, **kwargs):
+        self.name='login'
+        super(Screen,self).__init__(**kwargs)
+        #softinput_mode = 'pan'
+        #Window.softinput_mode = softinput_mode
+        print("Constructor Works")
+        self.app1 = App.get_running_app()
+        self.app1.backend.attach('idle_on_enter',self.resetForm)
+    
+
+
+        
+    def do_login(self, loginText, passwordText):
+        
+        
+        self.app1.dict["email"] = loginText
+        self.app1.dict["password"] = passwordText
 
         if( self.ids['login'].text == "" or self.ids['password'].text == ""):
             Factory.ErrorPopup().open()
+        else:    
 
-        elif( self.ids['login'].text == "admin" and self.ids['password'].text == "admin"):
-            self.manager.transition = SlideTransition(direction="left")
-            self.manager.current = 'administration'
+
+            self.app1.backend.attach('userAuthentificated', self.go_pickuptime)
+            self.app1.backend.attach('adminAuthentificated', self.go_admin)
+            self.app1.backend.loginStateMachine.onLogin(username = self.ids['login'].text, password = self.ids['password'].text)
             
-        else:
-            self.manager.transition = SlideTransition(direction="left")
-            self.manager.current = 'connected'
 
-            print("E-mail address is {}\n".format(app.dict["email"]))
-            print("Password is {}\n".format(app.dict["password"]))
-
+        
+        
 
     def resetForm(self):
         self.ids['login'].text = ""
@@ -46,7 +59,13 @@ class Login(Screen):
         self.manager.transition = SlideTransition(direction="right")
         self.manager.current = "register"
 
+    def go_pickuptime(self):
+        self.manager.transition = SlideTransition(direction="left")
+        self.manager.current = 'connected'
         
+    def go_admin(self):
+        self.manager.transition = SlideTransition(direction="left")
+        self.manager.current = 'administration'
 
 class LoginApp(App):
     email = StringProperty(None)
@@ -54,13 +73,15 @@ class LoginApp(App):
     name = StringProperty(None)
     surname = StringProperty(None)
     phone = StringProperty(None)
+    backend = Ics()
+    #Window.softinput_mode = 'pan'
 
 
     dict = {"email": email, "password": password, "name": name, "surname": surname, "phone": phone}
     
     def build(self):
-        #backend = Ics()
-        #backend.attach(self)
+        
+        self.backend.attach('authorizing_on_enter',self.update)
         self.manager = ScreenManager()
         
         self.manager.add_widget(Start(name='start'))

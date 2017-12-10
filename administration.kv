@@ -1,5 +1,11 @@
 <Administration>:
-    my_label: pwm_label    
+    my_label: pwm_label
+    current1_label: current_1
+    current2_label: current_2
+    current3_label: current_3
+    voltage1_label: voltage_1
+    voltage2_label: voltage_2
+    voltage3_label: voltage_3
     canvas.before:
         Rectangle:
             pos: self.pos
@@ -18,26 +24,66 @@
         GridLayout:
             cols: 2
             padding: [10, 10, 10, 10]
+
+            GridLayout:
+                cols: 1
+                
+
+                BoxLayout:
+                    orientation: "vertical"
+                    Label:
+                        id: pwm_label
+                        text: "PWM Value: 0"
+                        font_size: 32
+                        color: [1, 0, 0, 1]
+
             
-            BoxLayout:
-                orientation: "horizontal"
-                spacing: 20
-                Button:
-                    text: "Increment"
-                    font_size: 24
-                    on_press: root.do_increment()
-                Button:
-                    text: "Decrement"
-                    font_size: 24
-                    on_press: root.do_decrement()
+                BoxLayout:
+                    orientation: "horizontal"
+                    spacing: 20
+                    Button:
+                        text: "Increment"
+                        font_size: 24
+                        on_press: root.do_increment()
+                    Button:
+                        text: "Decrement"
+                        font_size: 24
+                        on_press: root.do_decrement()
 
             BoxLayout:
                 orientation: "vertical"
+                
                 Label:
-                    id: pwm_label
-                    text: "PWM Value: 0"
+                    id: current_1
+                    text: "Current1: 0"
                     font_size: 32
-                    color: [1, 0, 0, 1]
+                    color: [0,1,0,1]
+                Label:
+                    id: current_2
+                    text: "Current2: 0"
+                    font_size: 32
+                    color: [0,1,0,1]
+                Label:
+                    id: current_3
+                    text: "Current2: 0"
+                    font_size: 32
+                    color: [0,1,0,1]
+                Label:
+                    id: voltage_1
+                    text: "Voltage1: 0"
+                    font_size: 32
+                    color: [0,1,0,1]
+                Label:
+                    id: voltage_2
+                    text: "Voltage2: 0"
+                    font_size: 32
+                    color: [0,1,0,1]
+                Label:
+                    id: voltage_3
+                    text: "Voltage3: 0"
+                    font_size: 32
+                    color: [0,1,0,1]
+                
                 
 
         BoxLayout:
