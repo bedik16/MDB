@@ -1,8 +1,7 @@
 #:import Factory kivy.factory.Factory
-
-<MyPopup@Popup>:
+<Error2Popup@Popup>:
     auto_dismiss: False
-    title: "Registration Successful !!!"
+    title: "Error !!!"
     size_hint: None, None
     size: 400, 400
 
@@ -12,7 +11,7 @@
         BoxLayout:
             orientation: "vertical"
             Label:
-                text: "Thank you for your registration !!!"
+                text: "Please enter valid information !!!"
                 multiline: False
                 position_hint: None, None
                 position: 200, 200
@@ -24,8 +23,36 @@
                 font_size: 24
                 on_press: root.dismiss()
                 #on_release: root.do_cancel()
-   
-    
+
+<RegistrationPopup@Popup>:
+    auto_dismiss: False
+    title: "Registration Successful !!!"
+    size_hint: None, None
+    size: 400, 400
+
+    BoxLayout:
+        orientation: "vertical"
+
+        BoxLayout:
+            orientation: "vertical"
+            Label:
+                text: "Registration succesful"
+                multiline: False
+                position_hint_y: .5
+                font_size: 18
+            Label:
+                text: "please login with your account !!!"
+                multiline: False
+                font_size: 18
+
+
+            Button:
+                text: "Back"
+                size_hint_y: .3
+                font_size: 24
+                on_press: root.dismiss()
+                #on_release: root.do_cancel()
+                
 <Register>:
     canvas.before:
         Rectangle:
